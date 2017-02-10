@@ -1,0 +1,39 @@
+{
+    "apiVersion": "v1",
+    "kind": "Pod",
+    "metadata": {
+        "name": "b8-gluster"
+    },
+    "spec": {
+        "containers": [
+            {
+                "name": "glusterfs",
+                "image": "cargo.caicloudprivatetest.com/caicloud/debian:rsync",
+                "volumeMounts": [
+                    {
+                        "mountPath": "/mnt/glusterfs",
+                        "name": "replicavol"
+                    }
+                ],
+                "args": [
+                  "tail", "-f", "/dev/null"
+                ],
+                "resources": {
+                    "limits": {
+                        "cpu":"1000m",
+                        "memory":"512Mi"
+                    }
+                }
+            }
+        ],
+        "nodeName":"kube-node-6",
+        "volumes": [
+            {
+                "name": "replicavol",
+                "persistentVolumeClaim": {
+                    "claimName": "b8-pvc"
+                }
+            }
+        ]
+    }
+}

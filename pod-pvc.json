@@ -1,0 +1,32 @@
+{
+    "apiVersion": "v1",
+    "kind": "Pod",
+    "metadata": {
+        "name": "heketi-test2"
+    },
+    "spec": {
+        "containers": [
+            {
+                "name": "glusterfs",
+                "image": "cargo.caicloudprivatetest.com/caicloud/debian:rsync",
+                "volumeMounts": [
+                    {
+                        "mountPath": "/mnt/glusterfs2",
+                        "name": "glustervol"
+                    }
+                ],
+                "args": [
+                  "tail", "-f", "/dev/null"
+                ]
+            }
+        ],
+        "volumes": [
+            {
+                "name": "glustervol",
+                "persistentVolumeClaim": {
+                    "claimName": "gluster1"
+                }
+            }
+        ]
+    }
+}

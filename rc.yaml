@@ -1,0 +1,68 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  annotations:
+    kubectl.kubernetes.io/desired-replicas: "1"
+    kubectl.kubernetes.io/next-controller-id: kubernetes-admin-mongo-v3.0.5-344ae81342bc434e3ae99bd420748285-8b7d1da4b87fd01173742f8e7cf9374f
+    kubectl.kubernetes.io/original-replicas: "1"
+    kubectl.kubernetes.io/update-source-id: kubernetes-admin-mongo-v3.0.5:1fef34bc-e0a4-11e6-b0d1-5254003b48ea
+  creationTimestamp: 2017-02-03T06:48:36Z
+  deletionGracePeriodSeconds: 0
+  deletionTimestamp: 2017-02-03T07:51:05Z
+  finalizers:
+  - orphan
+  generation: 6
+  labels:
+    addon-manager.caicloud.io/key: mongo-rc-nfs
+    addon-manager.caicloud.io/name: kubernetes-admin
+    addon-manager.caicloud.io/version: v0.0.2
+    caicloud-app: kubernetes-admin-mongo
+    caicloud.io/cluster-service: "true"
+    kubernetes-admin.caicloud.io/application: kubernetes-admin-mongo-v3.0.5
+    kubernetes-admin.caicloud.io/type: application
+    version: v3.0.5
+  name: kubernetes-admin-mongo-v3.0.5-344ae81342bc434e3ae99bd420748285
+  namespace: default
+  resourceVersion: "3020664"
+  selfLink: /api/v1/namespaces/default/replicationcontrollers/kubernetes-admin-mongo-v3.0.5-344ae81342bc434e3ae99bd420748285
+  uid: c98d288f-e9dc-11e6-b5a5-5254003b48ea
+spec:
+  replicas: 1
+  selector:
+    caicloud-app: kubernetes-admin-mongo
+    deployment: 344ae81342bc434e3ae99bd420748285
+    version: v3.0.5
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        caicloud-app: kubernetes-admin-mongo
+        caicloud.io/cluster-service: "true"
+        deployment: 344ae81342bc434e3ae99bd420748285
+        kubernetes-admin.caicloud.io/application: kubernetes-admin-mongo-v3.0.5
+        kubernetes-admin.caicloud.io/type: application
+        version: v3.0.5
+    spec:
+      containers:
+      - command:
+        - mongod
+        - --smallfiles
+        image: cargo.caicloudprivatetest.com/caicloud/mongo:3.0.5
+        imagePullPolicy: IfNotPresent
+        name: mongo
+        ports:
+        - containerPort: 27017
+          protocol: TCP
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        volumeMounts:
+        - mountPath: /data/db
+          name: mongo-storage
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - name: mongo-storage
+        persistentVolumeClaim:
+          claimName: kubernetes-admin-mongo-data

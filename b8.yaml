@@ -1,0 +1,62 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: b8-pv
+spec:
+  accessModes:
+  - ReadWriteMany
+  capacity:
+    storage: 1Gi
+  glusterfs:
+    path: big
+    endpoints: b8-ep
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: b8-pvc
+  namespace: default
+spec:
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+---
+kind: Endpoints
+apiVersion: v1
+metadata:
+  name: b8-ep
+subsets:
+- addresses:
+  - ip: 192.168.16.82
+  ports:
+  - port: 1
+- addresses:
+  - ip: 192.168.16.114
+  ports:
+  - port: 1
+- addresses:
+  - ip: 192.168.16.141
+  ports:
+  - port: 1
+- addresses:
+  - ip: 192.168.16.49
+  ports:
+  - port: 1
+- addresses:
+  - ip: 192.168.16.144
+  ports:
+  - port: 1
+- addresses:
+  - ip: 192.168.16.145
+  ports:
+  - port: 1
+- addresses:
+  - ip: 192.168.16.146
+  ports:
+  - port: 1
+- addresses:
+  - ip: 192.168.16.112
+  ports:
+  - port: 1

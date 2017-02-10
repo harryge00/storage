@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  labels:
+    addon-manager.caicloud.io/key: kubernetes-mongo-pvc
+    addon-manager.caicloud.io/name: kubernetes-admin
+    addon-manager.caicloud.io/version: v0.0.2
+    caicloud-app: kubernetes-admin-mongo-data
+    caicloud.io/cluster-service: "true"
+  name: kubernetes-admin-mongo-data
+spec:
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 4Gi
+  selector:
+    matchLabels:
+      caicloud-app: kubernetes-admin-mongo-data
+  volumeName: kubernetes-admin-mongo-data
+status:
+  accessModes:
+  - ReadWriteMany
+  capacity:
+    storage: 4Gi

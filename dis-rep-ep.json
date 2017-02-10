@@ -1,0 +1,82 @@
+{
+  "kind": "Endpoints",
+  "apiVersion": "v1",
+  "metadata": {
+    "name": "dis-rep-ep"
+  },
+  "subsets": [
+    {
+      "addresses": [
+        {
+          "ip": "192.168.16.49"
+        }
+      ],
+      "ports": [
+        {
+          "port": 1
+        }
+      ]
+    },
+    {
+      "addresses": [
+        {
+          "ip": "192.168.16.82"
+        }
+      ],
+      "ports": [
+        {
+          "port": 1
+        }
+      ]
+    },
+    {
+      "addresses": [
+        {
+          "ip": "192.168.16.114"
+        }
+      ],
+      "ports": [
+        {
+          "port": 1
+        }
+      ]
+    },
+    {
+      "addresses": [
+        {
+          "ip": "192.168.16.141"
+        }
+      ],
+      "ports": [
+        {
+          "port": 1
+        }
+      ]
+    },
+    {
+      "addresses": [
+        {
+          "ip": "192.168.16.145"
+        }
+      ],
+      "ports": [
+        {
+          "port": 1
+        }
+      ]
+    },
+    {
+      "addresses": [
+        {
+          "ip": "192.168.16.146"
+        }
+      ],
+      "ports": [
+        {
+          "port": 1
+        }
+      ]
+    }
+
+  ]
+}

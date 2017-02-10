@@ -1,0 +1,33 @@
+{
+    "apiVersion": "v1",
+    "kind": "Pod",
+    "metadata": {
+        "name": "glusterfs-test2"
+    },
+    "spec": {
+        "containers": [
+            {
+                "name": "glusterfs",
+                "image": "cargo.caicloudprivatetest.com/caicloud/debian:rsync",
+                "volumeMounts": [
+                    {
+                        "mountPath": "/mnt/glusterfs",
+                        "name": "replica2vol"
+                    }
+                ],
+                "args": [
+                  "tail", "-f", "/dev/null"
+                ]
+            }
+        ],
+        "volumes": [
+            {
+                "name": "replica2vol",
+                "glusterfs": {
+                    "endpoints": "glusterfs-cluster2",
+                    "path": "cross2"
+                }
+            }
+        ]
+    }
+}

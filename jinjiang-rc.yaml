@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: gluster-tester
+spec:
+  replicas: 3
+  selector:
+    app: gluster
+  template:
+    metadata:
+      name: gluster-tester
+      labels:
+        app: gluster
+    spec:
+      containers:
+      - name: glusterfs
+        image: cargo.caicloud.io/caicloud/debian:jessie
+        volumeMounts:
+        - mountPath: "/mnt/glusterfs"
+          name: replicavol
+        args:
+        - tail
+        - "-f"
+        - "/dev/null"
+      volumes:
+      - name: replicavol
+        glusterfs:
+          endpoints: test-pv-ep
+          path: replica1
