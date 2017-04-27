@@ -1,0 +1,31 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: heketi
+  labels:
+    app: heketi
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: heketi
+    spec:
+      containers:
+      - name: heketi
+        image: cargo.caicloudprivatetest.com/caicloud/heketi
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - mountPath: /etc/heketi
+          name: heketi-volume
+        - mountPath: /root/.ssh
+          name: ssh-volume
+      volumes:
+      - name: ssh-volume
+        hostPath:
+          path: /home/caicloudroot/.ssh
+      - name: heketi-volume
+        hostPath:
+          path: /home/caicloudroot/heketi
+      nodeName: kube-node-3 # Pinned to node because the database is unmovalbe now

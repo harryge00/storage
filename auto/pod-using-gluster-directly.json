@@ -2,7 +2,7 @@
     "apiVersion": "v1",
     "kind": "Pod",
     "metadata": {
-        "name": "glusterfs-k8s-tester"
+        "name": "glusterfs-direct2"
     },
     "spec": {
         "containers": [
@@ -12,7 +12,7 @@
                 "volumeMounts": [
                     {
                         "mountPath": "/mnt/glusterfs",
-                        "name": "replicavol"
+                        "name": "vol1"
                     }
                 ],
                 "args": [
@@ -22,10 +22,10 @@
         ],
         "volumes": [
             {
-                "name": "replicavol",
+                "name": "vol1",
                 "glusterfs": {
-                    "endpoints": "gluster-from-k8s",
-                    "path": "test"
+                    "endpoints": "glusterfs-dynamic-gluster-test",
+                    "path": "vol_530f623e4bb8cd03ae4533985d88bf21"
                 }
             }
         ]

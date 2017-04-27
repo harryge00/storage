@@ -1,6 +1,6 @@
 {
   "_port_comment": "Heketi Server Port Number",
-  "port": "8081",
+  "port": "8080",
 
   "_use_auth": "Enable JWT authorization. Please enable for deployment",
   "use_auth": false,
@@ -9,11 +9,11 @@
   "jwt": {
     "_admin": "Admin has access to all APIs",
     "admin": {
-      "key": "5945"
+      "key": "tensorflow1234"
     },
     "_user": "User only has access to /volumes endpoint",
     "user": {
-      "key": "1234"
+      "key": "k8s1234"
     }
   },
 
@@ -32,8 +32,9 @@
 
     "_sshexec_comment": "SSH username and private key file information", 
    "sshexec": {
-      "keyfile": "/home/vagrant/.ssh/id_rsa",
-      "user": "root"
+      "keyfile": "/root/.ssh/id_rsa",
+      "user": "caicloudroot",
+      "sudo": true
     },
 
     "_kubeexec_comment": "Kubernetes configuration",

@@ -1,0 +1,88 @@
+{
+    "clusters": [
+        {
+            "nodes": [
+                {
+                    "node": {
+                        "hostnames": {
+                            "manage": [
+                                "kube-node-1"
+                            ],
+                            "storage": [
+                                "kube-node-1"
+                            ]
+                        },
+                        "zone": 1
+                    },
+                    "devices": [
+                        "/dev/sdd"
+                    ]
+                },
+                {
+                    "node": {
+                        "hostnames": {
+                            "manage": [
+                                "kube-node-2"
+                            ],
+                            "storage": [
+                                "kube-node-2"
+                            ]
+                        },
+                        "zone": 1
+                    },
+                    "devices": [
+                        "/dev/sdd"
+                    ]
+                },
+                {
+                    "node": {
+                        "hostnames": {
+                            "manage": [
+                                "kube-node-3"
+                            ],
+                            "storage": [
+                                "kube-node-3"
+                            ]
+                        },
+                        "zone": 1
+                    },
+                    "devices": [
+                        "/dev/sdd"
+                    ]
+                },
+                {
+                    "node": {
+                        "hostnames": {
+                            "manage": [
+                                "kube-master-2"
+                            ],
+                            "storage": [
+                                "kube-master-2"
+                            ]
+                        },
+                        "zone": 1
+                    },
+                    "devices": [
+                        "/dev/sdd"
+                    ]
+                },
+                {
+                    "node": {
+                        "hostnames": {
+                            "manage": [
+                                "kube-master-1"
+                            ],
+                            "storage": [
+                                "kube-master-1"
+                            ]
+                        },
+                        "zone": 1
+                    },
+                    "devices": [
+                        "/dev/sdd"
+                    ]
+                }
+            ]
+        }
+    ]
+}

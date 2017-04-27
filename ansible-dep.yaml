@@ -1,0 +1,30 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: heketi2
+  labels:
+    app: heketi2
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: heketi2
+    spec:
+      containers:
+      - name: heketi
+        image: cargo.caicloudprivatetest.com/caicloud/heketi
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - mountPath: /etc/heketi
+          name: heketi-volume
+        - mountPath: /root/.ssh
+          name: ssh-secret
+      volumes:
+      - name: ssh-secret
+        secret:
+          secretName: ssh-key-secret # It must be able to ssh to other nodes without password.
+      - name: heketi-volume
+        hostPath:
+          path: /root/heketi

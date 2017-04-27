@@ -2,31 +2,24 @@
     "apiVersion": "v1",
     "kind": "Pod",
     "metadata": {
-        "name": "b4-gluster"
+        "name": "gluster-tester"
     },
     "spec": {
         "containers": [
             {
                 "name": "glusterfs",
-                "image": "cargo.caicloudprivatetest.com/caicloud/debian:rsync",
+                "image": "cargo.caicloudprivatetest.com/caicloud/debian:jessie",
                 "volumeMounts": [
                     {
-                        "mountPath": "/mnt/glusterfs",
-                        "name": "replicavol"
+                        "mountPath": "/opt/sinopia/storage",
+                        "name": "vol1"
                     }
                 ],
                 "args": [
                   "tail", "-f", "/dev/null"
-                ],
-                "resources": {
-                    "limits": {
-                        "cpu":"1000m",
-                        "memory":"512Mi"
-                    }
-                }
+                ]
             }
         ],
-        "nodeName":"kube-node-6",
         "volumes": [
             {
                 "name": "replicavol",

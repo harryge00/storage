@@ -1,0 +1,8 @@
+apiVersion: storage.k8s.io/v1beta1
+kind: StorageClass
+metadata:
+  name: heketi-bigdata
+provisioner: kubernetes.io/glusterfs
+parameters:
+  resturl: "http://10.254.218.75:8080" # ip is the cluster ip of heketi service
+  clusterid: "26898b420e8a1d033cbfe41416805361"

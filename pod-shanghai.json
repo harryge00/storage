@@ -2,36 +2,29 @@
     "apiVersion": "v1",
     "kind": "Pod",
     "metadata": {
-        "name": "b4-gluster"
+        "name": "glusterfs-k8s-tester"
     },
     "spec": {
         "containers": [
             {
                 "name": "glusterfs",
-                "image": "cargo.caicloudprivatetest.com/caicloud/debian:rsync",
+                "image": "cargo.caicloud.io/caicloud/debian:jessie",
                 "volumeMounts": [
                     {
                         "mountPath": "/mnt/glusterfs",
-                        "name": "replicavol"
+                        "name": "mongo-storage"
                     }
                 ],
                 "args": [
                   "tail", "-f", "/dev/null"
-                ],
-                "resources": {
-                    "limits": {
-                        "cpu":"1000m",
-                        "memory":"512Mi"
-                    }
-                }
+                ]
             }
         ],
-        "nodeName":"kube-node-6",
         "volumes": [
             {
-                "name": "replicavol",
+                "name": "mongo-storage",
                 "persistentVolumeClaim": {
-                    "claimName": "pao-fake"
+                    "claimName": "cauth-mongo-data"
                 }
             }
         ]

@@ -1,0 +1,20 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: gluster-tester
+spec:
+  containers:
+  - name: glusterfs
+    image: cargo.caicloud.io/caicloud/debian:jessie
+    volumeMounts:
+    - mountPath: "/mnt/gluster"
+      name: test-vol
+    args:
+    - tail
+    - "-f"
+    - "/dev/null"
+  volumes:
+  - name: test-vol
+    persistentVolumeClaim:
+      claimName: gluster-pvc-10G

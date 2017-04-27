@@ -1,12 +1,13 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
- name: gluster3
- annotations:
-   volume.beta.kubernetes.io/storage-class: heketi-bigdata
+ name: zhanggui-pvc2
 spec:
  accessModes:
   - ReadWriteMany
+ selector:
+  matchLabels:
+    app: "test"
  resources:
    requests:
      storage: 1Gi

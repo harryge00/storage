@@ -1,0 +1,8 @@
+ALERT GlusterVolumeDown
+    IF gluster_volume_status == 2
+    FOR 3m
+    LABELS { severity = "warning" }
+    ANNOTATIONS {
+        summary = "volume {{ $labels.volume }} has stopped",
+        description = "{{ $labels.volume }} has status {{ $value }}",
+    }

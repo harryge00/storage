@@ -2,19 +2,29 @@
     "apiVersion": "v1",
     "kind": "Pod",
     "metadata": {
-        "name": "heketi-test2"
+        "name": "cweb"
     },
     "spec": {
         "containers": [
             {
                 "name": "glusterfs",
-                "image": "cargo.caicloudprivatetest.com/caicloud/debian:rsync",
+                "image": "cargo.caicloudprivatetest.com/caicloud/debian:jessie",
                 "volumeMounts": [
                     {
                         "mountPath": "/mnt/glusterfs2",
                         "name": "glustervol"
                     }
                 ],
+                "resources": {
+                    "limits": {
+                        "cpu": "100m",
+                        "memory": "100Mi"
+                    },
+                    "requests": {
+                        "cpu": "100m",
+                        "memory": "100Mi"
+                    }
+                },
                 "args": [
                   "tail", "-f", "/dev/null"
                 ]
@@ -24,7 +34,7 @@
             {
                 "name": "glustervol",
                 "persistentVolumeClaim": {
-                    "claimName": "gluster1"
+                    "claimName": "npm-dev"
                 }
             }
         ]

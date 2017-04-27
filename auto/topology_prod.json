@@ -6,50 +6,51 @@
                     "node": {
                         "hostnames": {
                             "manage": [
-                                "192.168.16.229"
+                                "192.168.48.18"
                             ],
                             "storage": [
-                                "192.168.16.229"
+                                "192.168.48.18"
                             ]
                         },
-                        "zone": 1
+                        "zone": 2
                     },
                     "devices": [
-                        "/dev/vdb"
+                        "/dev/sdb"
                     ]
                 },
                 {
                     "node": {
                         "hostnames": {
                             "manage": [
-                                "192.168.16.230"
+                                "192.168.48.14"
                             ],
                             "storage": [
-                                "192.168.16.230"
+                                "192.168.48.14"
                             ]
                         },
-                        "zone": 1
+                        "zone": 2
                     },
                     "devices": [
-                        "/dev/vdb"
+                        "/dev/sdb"
                     ]
                 },
                 {
                     "node": {
                         "hostnames": {
                             "manage": [
-                                "192.168.16.231"
+                                "192.168.48.17"
                             ],
                             "storage": [
-                                "192.168.16.231"
+                                "192.168.48.17"
                             ]
                         },
-                        "zone": 1
+                        "zone": 2
                     },
                     "devices": [
-                        "/dev/vdb"
+                        "/dev/sdb"
                     ]
                 }
+                
             ]
         }
     ]

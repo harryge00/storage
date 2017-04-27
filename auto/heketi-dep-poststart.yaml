@@ -1,0 +1,46 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: heketi
+  labels:
+    caicloud-app-name: heketi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      caicloud-app-name: heketi
+  template:
+    metadata:
+      labels:
+        caicloud-app-name: heketi
+    spec:
+      containers:
+      - image: cargo.caicloudprivatetest.com/caicloud/heketi:auto-topology
+        imagePullPolicy: Always
+        name: heketi
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        volumeMounts:
+        - mountPath: /etc/heketi
+          name: heketi-volume
+        - mountPath: /root/.ssh
+          name: ssh-secret
+        env:
+          - name: CLUSTERS
+            value: "192.168.16.211,192.168.16.212,192.168.16.213"
+          - name: PARTITION
+            value: "/dev/vdb"
+        lifecycle:
+          postStart:
+            exec:
+              command: ["/bin/bash", "-c", "init_heketi.sh"]
+      volumes:
+      - name: ssh-secret
+        secret:
+          defaultMode: 420
+          secretName: ssh-pao-secret
+      - glusterfs:
+          endpoints: glusterfs-cluster
+          path: heketi
+        name: heketi-volume

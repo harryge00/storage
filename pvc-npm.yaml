@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
- name: gluster3
+ name: failed-pvc
  annotations:
-   volume.beta.kubernetes.io/storage-class: heketi-bigdata
+   volume.beta.kubernetes.io/storage-class: sbsb
 spec:
  accessModes:
   - ReadWriteMany
